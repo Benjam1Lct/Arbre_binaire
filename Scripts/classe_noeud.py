@@ -30,7 +30,14 @@ class Noeud:
     def get_droit(self):
         return self.droit
     
-    def __eq__(self):
+    def __eq__(self,b):
+        a_arbre = []
+        b_arbre = []
+        a_arbre.append(self.gauche.__eq__(b))
+        b_arbre.append(b.gauche.__eq__(b))
+
+
+    def __str__(self):
         pass
 
 if __name__ == '__main__':
@@ -40,9 +47,15 @@ if __name__ == '__main__':
     a.ajoute_droit(17)
     a.ajoute_gauche(8)
     a.ajoute_gauche(6)
-    def affiche(T):
+    b = Noeud(12)
+    b.ajoute_droit(15)
+    b.ajoute_droit(14)
+    b.ajoute_droit(17)
+    b.ajoute_gauche(8)
+    b.ajoute_gauche(6)
+    """def affiche(T):
         if T != None:
-            return (T.get_valeur(),affiche(T.get_gauche()),affiche(T.get_droit()))
-    print(affiche(a))
+            return (T.get_valeur(),affiche(T.get_gauche()),affiche(T.get_droit()))"""
+    print(a.__eq__(b))
 
     
