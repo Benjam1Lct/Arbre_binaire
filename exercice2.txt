@@ -1,0 +1,12 @@
+1. Il y a 2 feuilles:
+    12 & 21
+
+2. sous-arbre gauche du noeud 23 : parent : 19 & enfant : 21
+
+3. hauteur : 4 & taille : 9
+
+4. val = 16,17
+
+5. infixe : 12,13,15,16,18,23,19,21,32
+
+6. suffixe : 12,13,16,15,21,19,32,23,18
