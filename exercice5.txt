@@ -1,0 +1,4 @@
+La taille de l'arbre est 13
+Sous-arbre gauche : 5
+Sous-arbre droit : 7
+la somme de la taille des sous-arbre plus la racine correspond a la taille de l'arbre
