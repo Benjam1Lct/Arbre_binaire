@@ -1,0 +1,4 @@
+prefixe = a,b,c,e,d,f,g,h,i,j,k,l,m
+infixe = e,c,f,b,d,a,g,h,i,j,k,l,m
+suffixe = e,f,c,d,b,j,k,i,h,m,l,g,a
+largeur = a,b,g,c,d,h,l,e,f,i,m,j,k 

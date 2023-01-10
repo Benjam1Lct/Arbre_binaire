@@ -1,7 +1,7 @@
-1. Il y a 2 feuilles:
-    12 & 21
+1. Il y a 4 feuilles:
+    12, val, 21 & 32
 
-2. sous-arbre gauche du noeud 23 : parent : 19 & enfant : 21
+2. sous-arbre gauche du noeud 23 : 19 & 21
 
 3. hauteur : 4 & taille : 9
 
