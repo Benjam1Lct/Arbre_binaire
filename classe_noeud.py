@@ -7,6 +7,9 @@ class Noeud:
         self.valeur = valeur
         self.gauche = None
         self.droit  = None
+        self.parents = None
+
+    
 
     def ajoute_gauche(self, valeur):
         if self.valeur == None:
@@ -33,7 +36,7 @@ class Noeud:
     def get_droit(self):
         return self.droit
     
-    def __eq__(self,other):
+    def eq(self,other):
         if type(self) is not int:
             if self.valeur() == other.valeur() and self.gauche() == other.gauche() and self.droit() == other.droit():
                 return True
@@ -51,6 +54,45 @@ class Noeud:
         else:
             return 1 + max(self.gauche.get_hauteur() if self.gauche else 0, self.droit.get_hauteur() if self.droit else 0)
 
+    def ABR(self, key):
+        while self.valeur is not None:
+            if key < self.valeur:
+                if self.gauche is None:
+                    return False
+                self = self.gauche
+            elif key > self.valeur:
+                if self.droit is None:
+                    return False
+                self = self.droit
+            else:
+                return True
+
+    def inserer(self, valeur):
+        if valeur < self.valeur:
+            if self.gauche == None:
+                self.gauche = self.gauche.ABR(valeur)
+                self.gauche.parent = self
+            else:
+                self.gauche.inserer(valeur)
+        else:
+            if self.droit == None:
+                self.droit = self.droit.ABR(valeur)
+                self.droit.parent = self
+            else:
+                self.droit.inserer(valeur)
+
+    def min(self):
+        while self.valeur is not None:
+            if self.gauche is None:
+                return self.valeur
+            self = self.gauche
+
+    def max(self):
+        while self.valeur is not None:
+            if self.droit is None:
+                return self.valeur
+            self = self.droit
+
 
 def parfait(num):
     from random import randint
@@ -65,13 +107,17 @@ def parfait(num):
 if __name__ == '__main__':
     x = parfait(4)
 
-    a = Noeud(2)
-    a.ajoute_droit(4)
-    a.ajoute_droit(14)
-    a.ajoute_droit(7)
-    a.ajoute_gauche(28)
-    a.ajoute_gauche(23)
-    a.ajoute_gauche(16)
+    a = Noeud(50)
+    a.ajoute_gauche(17)
+    a.ajoute_droit(72)
+    a.gauche.ajoute_gauche(12)
+    a.gauche.ajoute_droit(23)
+    a.droit.ajoute_gauche(54)
+    a.droit.ajoute_droit(76)
+    a.droit.gauche.ajoute_droit(67)
+    a.gauche.gauche.ajoute_gauche(9)
+    a.gauche.gauche.ajoute_droit(14)
+    a.gauche.droit.ajoute_gauche(19)
 
     b = Noeud(12)
     b.ajoute_droit(15)
@@ -79,9 +125,7 @@ if __name__ == '__main__':
     b.ajoute_droit(17)
     b.ajoute_gauche(8)
     b.ajoute_gauche(6)
-    """def affiche(T):
+    def affiche(T):
         if T != None:
-            return (T.get_valeur(),affiche(T.get_gauche()),affiche(T.get_droit()))"""
-    print(x.get_hauteur())
-    print(x.get_taille())
-    repr_graph(x)
+            return (T.get_valeur(),affiche(T.get_gauche()),affiche(T.get_droit()))
+    print(a.min())
