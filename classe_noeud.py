@@ -71,15 +71,24 @@ class Noeud:
         if valeur < self.valeur:
             if self.gauche == None:
                 self.gauche = self.gauche.ABR(valeur)
-                self.gauche.parent = self
+                self.gauche.parents = self
             else:
                 self.gauche.inserer(valeur)
         else:
             if self.droit == None:
                 self.droit = self.droit.ABR(valeur)
-                self.droit.parent = self
+                self.droit.parents = self
             else:
                 self.droit.inserer(valeur)
+
+    def enfant_gauche(self):
+        return self.parents is not None and self is self.parents.gauche
+
+    def enfant_droit(self):
+        return self.parents is not None and self is self.parents.droit
+
+    def successeur(self, noeud):
+        pass
 
     def min(self):
         while self.valeur is not None:
