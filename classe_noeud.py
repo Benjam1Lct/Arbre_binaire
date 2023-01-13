@@ -128,4 +128,4 @@ if __name__ == '__main__':
     def affiche(T):
         if T != None:
             return (T.get_valeur(),affiche(T.get_gauche()),affiche(T.get_droit()))
-    print(a.min())
+    repr_graph(a)
